@@ -15,7 +15,6 @@ build:
   number: 2
   run_exports:
     - {{ pin_subpackage(name, min_pin='x.x', max_pin='x.x') }}
-    - mkl-static  # [win]
 
 requirements:
   build:
@@ -34,11 +33,10 @@ requirements:
     - m2-base  # [win]
   host:
     - blas-devel
-    - libblas  # [unix]
-    - libcblas  # [unix]
-    - liblapack  # [unix]
-    - liblapacke  # [unix]
-    - mkl-static  # [win]
+    - libblas
+    - libcblas
+    - liblapack
+    - liblapacke
     - zlib
     - bzip2
 
@@ -51,6 +49,7 @@ test:
     - test -f $PREFIX/include/coin/CoinSort.hpp            # [unix]
     - if not exist %LIBRARY_LIB%/libCoinUtils.lib exit 1   # [win]
     - if not exist %LIBRARY_INC%/coin/CoinSort.hpp exit 1  # [win]
+    - dumpbin /headers %LIBRARY_LIB%\\libCoinUtils.lib | findstr /C:"DLL Name"  # [win]
 about:
   home: https://github.com/coin-or/CoinUtils
   dev_url: https://github.com/coin-or/CoinUtils
