@@ -49,7 +49,7 @@ test:
     - test -f $PREFIX/include/coin/CoinSort.hpp            # [unix]
     - if not exist %LIBRARY_LIB%/libCoinUtils.lib exit 1   # [win]
     - if not exist %LIBRARY_INC%/coin/CoinSort.hpp exit 1  # [win]
-    - dumpbin /headers %LIBRARY_LIB%\\libCoinUtils.lib | findstr /C:"DLL Name"  # [win]
+    - strings %LIBRARY_LIB%\\libCoinUtils.lib | findstr /C:"RuntimeLibrary=MD"  # [win]
 about:
   home: https://github.com/coin-or/CoinUtils
   dev_url: https://github.com/coin-or/CoinUtils
