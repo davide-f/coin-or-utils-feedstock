@@ -2,6 +2,11 @@
 
 set -e
 
+if [ ! -z ${LIBRARY_PREFIX+x} ]; then
+    USE_PREFIX=$LIBRARY_PREFIX
+else
+    USE_PREFIX=$PREFIX
+fi
 
 cp $BUILD_PREFIX/share/gnuconfig/config.* ./CoinUtils 
 cp $BUILD_PREFIX/share/gnuconfig/config.* .
@@ -11,8 +16,8 @@ LAPACK_LIB=( --with-lapack-lib='-L${PREFIX}/lib -llapack' )
 EXTRA_FLAGS=()
 
 ./configure \
-  --prefix="${$PREFIX}" \
-  --exec-prefix="${$PREFIX}" \
+  --prefix="${$USE_PREFIX}" \
+  --exec-prefix="${$USE_PREFIX}" \
   "${BLAS_LIB[@]}" \
   "${LAPACK_LIB[@]}" \
   "${EXTRA_FLAGS[@]}" || cat CoinUtils/config.log
