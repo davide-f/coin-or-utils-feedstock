@@ -1,11 +1,12 @@
-copy "%RECIPE_DIR%\build.sh" .
-set PREFIX=%PREFIX:\=/%
-set LIBRARY_PREFIX=%LIBRARY_PREFIX:\=/%
-set SRC_DIR=%SRC_DIR:\=/%
-set MSYSTEM=MINGW%ARCH%
-set MSYS2_PATH_TYPE=inherit
-set CHERE_INVOKING=1
-set BUILD_PLATFORM=win-64
+cd %SRC_DIR%
+
+set "CC=cl"
+set "CXX=cl"
+set "CFLAGS=/MD"
+set "CXXFLAGS=/MD"
+set "LD=link"
 
 
-bash -lc "./build.sh"
+bash -c "./configure --enable-msvc --prefix=%LIBRARY_PREFIX% --exec-prefix=%LIBRARY_PREFIX% --with-blas-lib='-L${PREFIX}/lib -lblas' --with-lapack-lib='-L${PREFIX}/lib -llapack'"
+bash -c "make -j%CPU_COUNT%"
+bash -c "make install"
