@@ -11,7 +11,7 @@ fi
 if [[ "${target_platform}" == win-* ]]; then
   BLAS_LIB=( --with-blas-lib='${LIBRARY_PREFIX}/lib/mkl_intel_ilp64.lib ${LIBRARY_PREFIX}/lib/mkl_sequential.lib ${LIBRARY_PREFIX}/lib/mkl_core.lib' )
   LAPACK_LIB=( --with-lapack-lib='' )
-  EXTRA_FLAGS=( --enable-msvc )
+  EXTRA_FLAGS=( --enable-msvc=MD )
 else
   # Get an updated config.sub and config.guess (for mac arm and lnx aarch64)
   cp $BUILD_PREFIX/share/gnuconfig/config.* ./CoinUtils 
