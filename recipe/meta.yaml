@@ -50,6 +50,8 @@ test:
     - if not exist %LIBRARY_LIB%/libCoinUtils.lib exit 1   # [win]
     - if not exist %LIBRARY_INC%/coin/CoinSort.hpp exit 1  # [win]
     - strings %LIBRARY_LIB%\\libCoinUtils.lib | findstr /C:"RuntimeLibrary=MD"  # [win]
+  requires:
+    - binutils  # [win]
 about:
   home: https://github.com/coin-or/CoinUtils
   dev_url: https://github.com/coin-or/CoinUtils
