@@ -9,8 +9,8 @@ else
 fi
 
 if [[ "${target_platform}" == win-* ]]; then
-  BLAS_LIB=( --with-blas-lib='-L${PREFIX}/lib -lblas' )
-  LAPACK_LIB=( --with-lapack-lib='-L${PREFIX}/lib -llapack' )
+  BLAS_LIB=( --with-blas-lib='-L${LIBRARY_PREFIX}/lib -lblas' )
+  LAPACK_LIB=( --with-lapack-lib='-L${LIBRARY_PREFIX}/lib -llapack' )
   EXTRA_FLAGS=( --enable-msvc=MD )
 else
   # Get an updated config.sub and config.guess (for mac arm and lnx aarch64)
