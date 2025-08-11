@@ -20,6 +20,10 @@ cxx_compiler_version:
 - '14'
 docker_image:
 - quay.io/condaforge/linux-anvil-aarch64:alma9
+fortran_compiler:
+- gfortran
+fortran_compiler_version:
+- '14'
 libblas:
 - 3.9.* *netlib
 liblapack:
@@ -29,5 +33,6 @@ target_platform:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
+  - fortran_compiler_version
 zlib:
 - '1'
