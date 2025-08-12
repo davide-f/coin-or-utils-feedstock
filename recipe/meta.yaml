@@ -38,6 +38,10 @@ requirements:
     - mkl-devel  # [win]
     - zlib
     - bzip2
+  run:
+    - libblas  # [unix]
+    - libcblas  # [unix]
+    - liblapack  # [unix]
 
   run_constrained:
     - coincbc * *_metapackage
